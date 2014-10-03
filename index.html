@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title of the document</title>
+<!-- CSS REQUIRED (Bootstrap + style.css)-->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/datepicker.css">
+<link rel="stylesheet" type="text/css" href="css/mystyle.css">
+<!-- Important Owl stylesheet -->
+<link rel="stylesheet" href="owl-carousel/owl.carousel.css">
+<!-- Default Theme -->
+<link rel="stylesheet" href="owl-carousel/owl.theme.css">
+<!--End CSS REQUIRED-->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ddslick.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+	<script src="owl-carousel/owl.carousel.js"></script>
+	<script>
+	 // DOM ready
+	 $(function() {
+		$("#owl-scroll").owlCarousel({
+			items : 3,
+			itemsDesktop : [1199,4],
+			itemsDesktopSmall : [980,2],
+			itemsTablet: [768,2],
+			slideSpeed : 200,
+			paginationSpeed : 800,
+			rewindSpeed : 1000,
+ 
+			//Autoplay
+			autoPlay : true,
+			stopOnHover : true
+		});
+      // Create the dropdown base
+      $("<select />").appendTo("nav");
+      
+      // Create default option "Go to..."
+      $("<option />", {
+         "selected": "selected",
+         "value"   : "",
+         "text"    : "Go to..."
+      }).appendTo("nav select");
+      
+      // Populate dropdown with menu items
+      $("#nav a").each(function() {
+       var el = $(this);
+       $("<option />", {
+           "value"   : el.attr("href"),
+           "text"    : el.text()
+       }).appendTo("nav select");
+      });
+      
+	   // To make dropdown actually work
+	   // To make more unobtrusive: http://css-tricks.com/4064-unobtrusive-page-changer/
+      $("nav select").change(function() {
+        window.location = $(this).find("option:selected").val();
+      });
+	  $('#destination').ddslick({
+    data:destinationData,
+    selectText: "Select your Destination",
+    onSelected: function(selectedData){
+        //callback function: do something with selectedData;
+		$('#destination').css({"padding-bottom" : "10px"});
+    }   
+});
+$('#accomodation').ddslick({
+			truncateDescription: true,
+			data:accomodationData,
+			selectText: "Select your Accomodation",
+			onSelected: function(selectedData){
+			$('#accomodation').css({"padding-bottom" : "10px"});
+			//callback function: do something with selectedData;
+		}   
+});
+    $('.input-daterange').datepicker({
+		startDate: "tomorrow"
+    });
+	 });
+		//Dropdown plugin data
+var destinationData = [
+    {
+        text: "Kenya",
+        value: 1,
+        selected: false,
+        description: "The Great Rift Valley, Lake Naivasha, Mt Longonot",
+        imageSrc: "http://icons.iconarchive.com/icons/icondrawer/flags/32/Kenya-icon.png"
+    },
+    {
+        text: "Uganda",
+        value: 2,
+        selected: false,
+        description: "River Nile, Owen Falls, Mt Ruwenzori",
+        imageSrc: "http://icons.iconarchive.com/icons/icondrawer/flags/32/Uganda-icon.png"
+    },
+    {
+        text: "Tanzania",
+        value: 3,
+        selected: false,
+        description: "Mt Kilimanjaro, Serengeti Park, Lake Manyara",
+        imageSrc: "http://icons.iconarchive.com/icons/custom-icon-design/all-country-flag/32/Tanzania-Flag-icon.png"
+    },
+    {
+        text: "Rwanda",
+        value: 4,
+        selected: false,
+        description: "Lake Kivu, Volcanoes Park, Nyungwe Forest",
+        imageSrc: "http://icons.iconarchive.com/icons/custom-icon-design/all-country-flag/32/Rwanda-Flag-icon.png"
+    }
+];
+var accomodationData = [
+    {
+        text: "Hotel",
+        value: 1,
+        selected: false,
+        description: "Enjoy Best Hotel Services. Starting at $200 per night",
+        imageSrc: "http://icons.iconarchive.com/icons/dapino/summer-holiday/32/hotel-icon.png"
+    },
+    {
+        text: "Tents",
+        value: 2,
+        selected: false,
+        description: "Love to Camp? Enjoy prices from $70 per night",
+        imageSrc: "http://icons.iconarchive.com/icons/dapino/summer-blue/32/Tent-icon.png"
+    },
+    {
+        text: "Hostels ",
+        value: 3,
+        selected: false,
+        description: "Looking for a Cheaper Solution? From $30 per night.",
+        imageSrc: "http://icons.iconarchive.com/icons/archigraphs/collection/32/House-icon.png"
+    },
+    {
+        text: "Personal",
+        value: 4,
+        selected: false,
+        description: "Go Personal, Just enjoy our awesome tours ",
+        imageSrc: "http://icons.iconarchive.com/icons/dapino/summer-blue/32/Suitcase-icon.png"
+    }
+];
+	</script>
+</head>
+
+<body>
+<img class="header_bg" src="images/bg-zanzibar.png" alt="" />
+<div class= "container">
+<div class="row">
+<section id="header">
+<div id="rectangle" class="ribbon"></div>
+<div id="square" class="ribbon"></div>
+<h1 class="ribbon_text">T&Tours</h1>
+<nav>
+<ul id="nav">
+	<li class="current"><a href="#">Home</a></li>
+	<li><a href="#">Popular Locations</a>
+		<ul>
+			<li><a href="#">Kenya</a>
+				<ul>
+					<li><a href="#">Nairobi</a></li>
+					<li><a href="#">Mombasa</a></li>
+					<li><a href="#">Naivasha</a></li>
+					<li><a href="#">Kisumu</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Uganda</a>
+				<ul>
+					<li><a href="#">Nairobi</a></li>
+					<li><a href="#">Mombasa</a></li>
+					<li><a href="#">Naivasha</a></li>
+					<li><a href="#">Kisumu</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Tanzania</a>
+				<ul>
+					<li><a href="#">Nairobi</a></li>
+					<li><a href="#">Mombasa</a></li>
+					<li><a href="#">Naivasha</a></li>
+					<li><a href="#">Kisumu</a></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li><a href="#">Multi-Levels</a>
+		<ul>
+			<li><a href="#">Team</a>
+				<ul>
+					<li><a href="#">Sub-Level Item</a></li>
+					<li><a href="#">Sub-Level Item</a>
+						<ul>
+							<li><a href="#">Sub-Level Item</a></li>
+							<li><a href="#">Sub-Level Item</a></li>
+							<li><a href="#">Sub-Level Item</a></li>
+						</ul>
+					</li>
+					
+					<li><a href="#">Sub-Level Item</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Sales</a></li>
+			<li><a href="#">Another Link</a></li>
+			<li><a href="#">Department</a>
+				<ul>
+					<li><a href="#">Sub-Level Item</a></li>
+					<li><a href="#">Sub-Level Item</a></li>
+					<li><a href="#">Sub-Level Item</a></li>
+				</ul>
+			</li>
+		</ul>
+	</li>	
+	<li><a href="#">About</a></li>
+	<li><a href="#">Contact Us</a></li>
+</ul>
+</nav>
+</div>
+</section>
+</div>
+<div class="container search_form">
+<div id="tour-selector" class="row ">
+<form class="form-inline s_form" role="form" method="get">
+  <div class="form-group col-xs-12 col-sm-12 col-md-3">
+	<div id="destination"></div>
+  </div>
+  <div class="form-group col-xs-12 col-md-3">
+	<div id="accomodation"></div>
+  </div>
+  <div class="form-group col-xs-12 col-sm-12 col-md-4">
+     <div class="input-daterange input-group" id="datepicker">
+    <input type="text" placeholder="Tour Start Date" class="input-sm form-control input-dtp" name="start" />
+    <span class="input-group-addon">to</span>
+    <input type="text" placeholder="Tour End Date" class="input-sm form-control input-dtp" name="end" />
+    </div>
+  </div>
+  <div class="col-md-2"/> <button id="book-me" type="submit" class="btn btn-danger">Book Me!</button></div>
+</form>
+</div>
+</div>
+<div class="container-fluid boxes">
+<div class="row carousel-row">
+<h4> Popular Places </h4>
+<div id="owl-scroll" class="owl-carousel">
+  <div class="item"><img class="thumbnail" src="images/offer.jpg" width="100%"/></div>
+  <div style="margin:5px;"><img class="thumbnail" src="images/rocks.jpg" width="100%"/></div>
+  <div style="margin:5px;"><img class="thumbnail" src="images/forest.jpg" width="100%"/></div>
+  <div style="margin:5px;"><img class="thumbnail" src="images/crown.jpg" width="100%"/></div>
+  <div style="margin:5px;"><img class="thumbnail" src="images/offer.png" width="100%"/></div>
+  <div style="margin:5px;"><img class="thumbnail" src="images/hardrock.jpg" width="100%"/></div>
+  <div style="margin:5px;"><img class="thumbnail" src="images/falls.jpg" width="100%"/></div>
+  <div style="margin:5px;"><img class="thumbnail" src="images/offer.jpg" width="100%"/></div>
+
+
+</div>
+</div>
+</div>
+<div class="clear"></div>
+<div class=" container alert alert-warning alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>Alert!</strong> Always remember to check your spam folder in your email if you dont receive any reply from us
+</div>
+<div class="container-fluid footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 col-md-4">
+				<h5>ABOUT US</h5>
+				<p>We are TnTours Inc. We offer the best services in Travel and tours in Kenya, Uganda, Tanzania, Burundi and Rwanda.
+				We are currently ranked as the best in customer services....etc</p><p>We are TnTours Inc. We offer the best services in Travel and tours in Kenya, Uganda, Tanzania, Burundi and Rwanda.
+				We are currently ranked as the best in customer services....etc</p>
+			</div>
+			<div class="col-sm-6 col-md-4">
+				<h5>EQUIRIES</h5>
+				<ul>
+				<li>Phone:<span>071020202020</span>
+				<li>Email:<span>tnt@tntours.com</span>
+				<li>Head Office:<span>Abc Street, 67th Flour, 123 Bldn Nairobi</span>
+				</ul>
+			</div>
+			<div class="col-sm-6 col-md-4">
+				<h5>SUBSCRIBE</h5>
+				<p>Subscribe to our newsletter for the latest offers:
+				</p>
+				<div class="input-group">
+					<input type="text" placeholder="Your Email Here" class="form-control">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button">Go!</button>
+						</span>
+				</div><!-- /input-group -->
+			</div>
+		</div>
+	<div class="hr"/>
+	</div>
+	<div class="copyright">
+			Copyright TnTours 2014
+	</div>
+</div>
+</body>
+
+</html>
